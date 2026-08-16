@@ -1,27 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ==========================================
-   VARIABLES Y PALETA GRIS CLARO DINÁMICA
+   VARIABLES Y PALETA GRIS AZULADO INTERMEDIO
    ========================================== */
 :root {
-    /* Fondos Gris Claro en capas */
-    --bg-main: #f8fafc;              /* Slate ultra claro */
-    --bg-surface: #f1f5f9;           /* Gris niebla con matiz frío */
-    --bg-surface-elevated: #ffffff;  /* Blanco puro para tarjetas */
+    /* Fondos Gris Azulado en Capas */
+    --bg-main: #1e293b;              /* Slate oscuro / Gris acero */
+    --bg-surface: #111827;           /* Azul noche muy profundo */
+    --bg-surface-elevated: #334155;  /* Slate medio elevado para tarjetas */
     
-    /* Acentos Azules */
-    --accent-blue: #0f2b48;          /* Azul marino imperial */
-    --accent-blue-soft: rgba(15, 43, 72, 0.06);
-    --accent-blue-hover: #1e40af;    /* Azul cobalto */
+    /* Acentos Azul Brillante y Acero */
+    --accent-blue: #38bdf8;          /* Azul cian claro para contrastar sobre gris */
+    --accent-blue-soft: rgba(56, 189, 248, 0.12);
+    --accent-blue-hover: #60a5fa;    /* Azul suave hover */
     
-    /* Textos para Fondo Claro */
-    --text-primary: #0f172a;        /* Azul grisáceo muy oscuro */
-    --text-secondary: #475569;      /* Slate medio */
-    --text-muted: #64748b;          /* Slate suave */
+    /* Textos para Fondo Medio-Oscuro */
+    --text-primary: #f8fafc;        /* Blanco frío */
+    --text-secondary: #cbd5e1;      /* Slate claro */
+    --text-muted: #94a3b8;          /* Slate neutro */
     
-    /* Bordes con matiz neutro-frío */
-    --border-subtle: #e2e8f0;
-    --border-blue-subtle: rgba(15, 43, 72, 0.25);
+    /* Bordes sutiles */
+    --border-subtle: rgba(203, 213, 225, 0.15);
+    --border-blue-subtle: rgba(56, 189, 248, 0.35);
     
     /* Tipografías */
     --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -56,7 +56,7 @@ body {
    NAVBAR SOBRIO
    ========================================== */
 .navbar {
-    background-color: rgba(248, 250, 252, 0.88);
+    background-color: rgba(30, 41, 59, 0.9);
     border-bottom: 1px solid var(--border-subtle);
     position: sticky;
     top: 0;
@@ -82,14 +82,14 @@ body {
     font-family: var(--font-serif);
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--accent-blue);
+    color: var(--text-primary);
     letter-spacing: 2px;
     line-height: 1;
 }
 
 .brand-sub {
     font-size: 0.65rem;
-    color: var(--text-secondary);
+    color: var(--accent-blue);
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 600;
@@ -118,13 +118,13 @@ body {
 }
 
 /* ==========================================
-   HERO SECTION EDITORIAL (CON DEGRADADO MULTI-MATIZ)
+   HERO SECTION EDITORIAL (DEGRADADO PROFUNDO)
    ========================================== */
 .hero {
     padding: 4.5rem 0 3.5rem 0;
     text-align: center;
     position: relative;
-    background: radial-gradient(circle at 50% 20%, #ffffff 0%, #f1f5f9 60%, var(--bg-main) 100%);
+    background: radial-gradient(circle at 50% 20%, #334155 0%, #1e293b 70%, #0f172a 100%);
 }
 
 .location-badge {
@@ -206,7 +206,7 @@ body {
 
 .btn-primary {
     background-color: var(--accent-blue);
-    color: #ffffff;
+    color: #0f172a;
     border: 1px solid var(--accent-blue);
 }
 
@@ -214,18 +214,19 @@ body {
     background-color: var(--accent-blue-hover);
     border-color: var(--accent-blue-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(15, 43, 72, 0.15);
+    box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
 }
 
 .btn-secondary {
-    background-color: #ffffff;
-    color: var(--accent-blue);
+    background-color: transparent;
+    color: var(--text-primary);
     border: 1px solid var(--border-subtle);
 }
 
 .btn-secondary:hover {
-    background-color: var(--bg-main);
+    background-color: var(--accent-blue-soft);
     border-color: var(--accent-blue);
+    color: var(--accent-blue);
     transform: translateY(-2px);
 }
 
@@ -279,13 +280,13 @@ body {
 .schedule-card:hover {
     border-color: var(--border-blue-subtle);
     transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
 .schedule-card.featured {
     border-color: var(--border-blue-subtle);
-    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-    box-shadow: 0 4px 20px rgba(15, 43, 72, 0.04);
+    background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .day-label {
@@ -301,14 +302,14 @@ body {
     font-family: var(--font-serif);
     font-size: 1.8rem;
     font-weight: 600;
-    color: var(--accent-blue);
+    color: var(--text-primary);
     margin-bottom: 0.4rem;
 }
 
 .schedule-card .time {
     font-size: 2.2rem;
     font-weight: 300;
-    color: var(--text-primary);
+    color: var(--accent-blue);
     margin-bottom: 0.8rem;
     font-family: var(--font-serif);
 }
@@ -337,14 +338,14 @@ body {
 }
 
 .btn-facebook {
-    background-color: #ffffff;
-    color: #1877f2;
-    border: 1px solid rgba(24, 119, 242, 0.3);
+    background-color: transparent;
+    color: #60a5fa;
+    border: 1px solid rgba(96, 165, 250, 0.3);
 }
 
 .btn-facebook:hover {
-    background-color: rgba(24, 119, 242, 0.04);
-    border-color: #1877f2;
+    background-color: rgba(96, 165, 250, 0.1);
+    border-color: #60a5fa;
     transform: translateY(-2px);
 }
 
