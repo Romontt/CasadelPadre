@@ -1,21 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ==========================================
-   VARIABLES Y ESTILOS GLOBALES
+   VARIABLES Y PALETA DE LUJO MINIMALISTA
    ========================================== */
 :root {
-    --bg-dark: #050b14;
-    --card-bg: rgba(15, 25, 42, 0.6);
-    --card-bg-hover: rgba(22, 36, 61, 0.8);
-    --primary-blue: #0066ff;
-    --cyan-accent: #00d2ff;
-    --text-white: #ffffff;
-    --text-muted: #94a3b8;
-    --border-color: rgba(255, 255, 255, 0.08);
-    --border-glow: rgba(0, 210, 255, 0.3);
-    --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --bg-main: #06090e;
+    --bg-surface: #0b1017;
+    --bg-surface-elevated: #111823;
+    
+    /* Acentos Soberbios */
+    --accent-gold: #d4af37;
+    --accent-gold-soft: rgba(212, 175, 55, 0.15);
+    --accent-gold-hover: #e5c158;
+    
+    /* Textos */
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    /* Bordes sutiles */
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-gold-subtle: rgba(212, 175, 55, 0.25);
+    
+    /* Tipografías */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+/* ==========================================
+   RESET & BASES
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -23,42 +37,38 @@
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-white);
-    font-family: var(--font-main);
-    line-height: 1.6;
-    overflow-x: hidden;
-    background-image: 
-        radial-gradient(circle at 50% 0%, rgba(0, 117, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(0, 210, 255, 0.05) 0%, transparent 40%);
-    background-attachment: fixed;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
 }
 
 .container {
-    width: 90%;
-    max-width: 1150px;
+    width: 88%;
+    max-width: 1080px;
     margin: 0 auto;
 }
 
 /* ==========================================
-   HEADER / NAVBAR (GLASSMORPHISM)
+   NAVBAR SOBRIO
    ========================================== */
 .navbar {
-    background-color: rgba(5, 11, 20, 0.7);
-    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(6, 9, 14, 0.85);
+    border-bottom: 1px solid var(--border-subtle);
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 0;
+    padding: 1.5rem 0;
 }
 
 .logo {
@@ -68,274 +78,274 @@ body {
 }
 
 .brand-title {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--text-white);
-    letter-spacing: 1.5px;
-    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+    line-height: 1;
 }
 
 .brand-sub {
-    font-size: 0.7rem;
-    color: var(--cyan-accent);
+    font-size: 0.65rem;
+    color: var(--accent-gold);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
+    letter-spacing: 3px;
+    font-weight: 500;
+    margin-top: 4px;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .nav-links a {
-    color: var(--text-muted);
+    color: var(--text-secondary);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    position: relative;
-    padding: 0.3rem 0;
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary-blue), var(--cyan-accent));
-    transition: width 0.3s ease;
-    border-radius: 2px;
-}
-
-.nav-links a:hover {
-    color: var(--text-white);
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
-}
-
+.nav-links a:hover,
 .nav-links a.active {
-    color: var(--cyan-accent);
+    color: var(--accent-gold);
 }
 
 /* ==========================================
-   HERO SECTION
+   HERO SECTION EDITORIAL
    ========================================== */
 .hero {
-    padding: 7rem 0 5rem 0;
+    padding: 8rem 0 6rem 0;
     text-align: center;
     position: relative;
+    background: radial-gradient(circle at 50% 20%, rgba(17, 24, 35, 0.8) 0%, var(--bg-main) 70%);
 }
 
-.tagline {
-    font-size: 0.8rem;
-    color: var(--cyan-accent);
-    letter-spacing: 3px;
+.location-badge {
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    letter-spacing: 4px;
     text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-weight: 600;
     display: inline-block;
-    padding: 0.4rem 1.2rem;
-    background: rgba(0, 210, 255, 0.08);
-    border: 1px solid rgba(0, 210, 255, 0.2);
-    border-radius: 50px;
-    backdrop-filter: blur(5px);
+    margin-bottom: 1.5rem;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-    letter-spacing: -1px;
-    background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-family: var(--font-serif);
+    font-size: 4.2rem;
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.hero h1 i {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: var(--accent-gold);
 }
 
 .slogan {
-    font-size: 1.3rem;
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
     font-style: italic;
-    color: var(--cyan-accent);
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    font-weight: 400;
 }
 
 .pastors {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
-    margin-bottom: 2.5rem;
-    font-weight: 500;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
 }
 
 .hero-buttons {
     display: flex;
     justify-content: center;
-    gap: 1.2rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
 }
 
-/* BOTONES ELEGANTES */
+/* BOTONES FINOS */
 .btn {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    padding: 0.9rem 2rem;
-    border-radius: 50px;
+    padding: 0.85rem 2.2rem;
+    border-radius: 2px;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-blue), #00d2ff);
-    color: var(--text-white);
-    box-shadow: 0 0 25px rgba(0, 102, 255, 0.4);
-    border: none;
+    background-color: var(--accent-gold);
+    color: #000000;
+    border: 1px solid var(--accent-gold);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 35px rgba(0, 210, 255, 0.6);
+    background-color: var(--accent-gold-hover);
+    border-color: var(--accent-gold-hover);
+    transform: translateY(-2px);
 }
 
 .btn-secondary {
-    background-color: rgba(255, 255, 255, 0.03);
-    color: var(--text-white);
-    border: 1px solid var(--border-color);
-    backdrop-filter: blur(10px);
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: var(--cyan-accent);
-    color: var(--cyan-accent);
-    transform: translateY(-3px);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    transform: translateY(-2px);
 }
 
 /* ==========================================
-   HORARIOS / AGENDA
+   AGENDA Y REUNIONES
    ========================================== */
 .schedule-section {
-    padding: 5rem 0;
-    text-align: center;
+    padding: 7rem 0;
+    border-top: 1px solid var(--border-subtle);
+    background-color: var(--bg-surface);
 }
 
-.schedule-section h2,
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-subtitle {
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.section-header h2,
 .community-section h2 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin-bottom: 2.5rem;
-    letter-spacing: -0.5px;
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--text-primary);
 }
 
 .schedule-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
 .schedule-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 2.5rem 2rem;
-    border-radius: 20px;
-    backdrop-filter: blur(12px);
-    transition: all 0.3s ease;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-subtle);
+    padding: 3rem 2.5rem;
+    border-radius: 0px;
+    transition: all 0.4s ease;
     position: relative;
-    overflow: hidden;
 }
 
 .schedule-card:hover {
-    background: var(--card-bg-hover);
-    transform: translateY(-5px);
-    border-color: var(--border-glow);
+    border-color: var(--border-gold-subtle);
+    transform: translateY(-4px);
 }
 
-.schedule-card.highlight {
-    border: 1px solid rgba(0, 210, 255, 0.4);
-    background: linear-gradient(180deg, rgba(0, 102, 255, 0.1) 0%, rgba(15, 25, 42, 0.6) 100%);
-    box-shadow: 0 10px 30px rgba(0, 102, 255, 0.15);
+.schedule-card.featured {
+    border-color: var(--border-gold-subtle);
+    background: linear-gradient(180deg, var(--bg-surface-elevated) 0%, var(--bg-main) 100%);
+}
+
+.day-label {
+    font-size: 0.7rem;
+    color: var(--accent-gold);
+    letter-spacing: 2px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1rem;
 }
 
 .schedule-card h3 {
-    font-size: 1.3rem;
-    color: var(--cyan-accent);
-    margin-bottom: 0.8rem;
-    font-weight: 700;
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 .schedule-card .time {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    color: var(--text-white);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
 }
 
-.schedule-card .activity {
-    color: var(--text-muted);
-    font-weight: 500;
+.schedule-card .description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 300;
 }
 
 /* ==========================================
-   REDES SOCIALES & FOOTER
+   COMUNIDAD & FOOTER
    ========================================== */
 .community-section {
-    padding: 5rem 0;
+    padding: 7rem 0;
     text-align: center;
-    background: linear-gradient(180deg, transparent 0%, rgba(15, 25, 42, 0.8) 100%);
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-subtle);
+    background-color: var(--bg-main);
 }
 
 .community-section p {
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin: 1rem 0 2.5rem 0;
+    font-size: 1rem;
+    font-weight: 300;
 }
 
-.social-btn.facebook {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    background: linear-gradient(135deg, #1877f2, #0052cc);
-    color: white;
-    padding: 1rem 2.2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    box-shadow: 0 4px 20px rgba(24, 119, 242, 0.3);
-    transition: all 0.3s ease;
+.btn-facebook {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
 }
 
-.social-btn.facebook:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(24, 119, 242, 0.5);
+.btn-facebook:hover {
+    border-color: #1877f2;
+    color: #1877f2;
+    transform: translateY(-2px);
 }
 
 footer {
-    border-top: 1px solid var(--border-color);
-    padding: 2.5rem 0;
+    border-top: 1px solid var(--border-subtle);
+    padding: 3rem 0;
     text-align: center;
     color: var(--text-muted);
-    font-size: 0.9rem;
-    background-color: var(--bg-dark);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    background-color: var(--bg-main);
 }
 
 /* RESPONSIVE PA CELULARES */
 @media (max-width: 768px) {
-    .hero { padding: 4rem 0 3rem 0; }
-    .hero h1 { font-size: 2.2rem; }
-    .slogan { font-size: 1.1rem; }
-    .nav-container { flex-direction: column; gap: 1.2rem; }
-    .nav-links { gap: 1.2rem; }
+    .hero { padding: 5rem 0 4rem 0; }
+    .hero h1 { font-size: 2.8rem; }
+    .slogan { font-size: 1.2rem; }
+    .nav-container { flex-direction: column; gap: 1.5rem; }
+    .nav-links { gap: 1.5rem; }
 }
