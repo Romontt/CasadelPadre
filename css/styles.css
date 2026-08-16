@@ -1,17 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
 /* ==========================================
-   HERO SECTION EDITORIAL (COMPACTO)
+   VARIABLES Y PALETA DE LUJO MINIMALISTA
+   ========================================== */
+:root {
+    --bg-main: #06090e;
+    --bg-surface: #0b1017;
+    --bg-surface-elevated: #111823;
+    
+    /* Acentos Soberbios */
+    --accent-gold: #d4af37;
+    --accent-gold-soft: rgba(212, 175, 55, 0.15);
+    --accent-gold-hover: #e5c158;
+    
+    /* Textos */
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    /* Bordes sutiles */
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-gold-subtle: rgba(212, 175, 55, 0.25);
+    
+    /* Tipografías */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================
+   RESET & BASES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 88%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   NAVBAR SOBRIO
+   ========================================== */
+.navbar {
+    background-color: rgba(6, 9, 14, 0.85);
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 0;
+}
+
+.logo {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.brand-sub {
+    font-size: 0.65rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-gold);
+}
+
+/* ==========================================
+   HERO SECTION EDITORIAL (OPTIMIZADO Y COMPACTO)
    ========================================== */
 .hero {
-    padding: 4rem 0 3.5rem 0; /* Espaciado vertical reducido a la mitad */
+    padding: 4.5rem 0 3.5rem 0;
     text-align: center;
     position: relative;
-    background: radial-gradient(circle at 50% 10%, rgba(17, 24, 35, 0.7) 0%, var(--bg-main) 70%);
+    background: radial-gradient(circle at 50% 15%, rgba(17, 24, 35, 0.75) 0%, var(--bg-main) 70%);
 }
 
 .location-badge {
     font-size: 0.7rem;
     color: var(--accent-gold);
-    letter-spacing: 3px;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
     font-weight: 600;
     display: inline-block;
@@ -20,7 +138,7 @@
 
 .hero h1 {
     font-family: var(--font-serif);
-    font-size: 3.2rem; /* Tamaño más balanceado */
+    font-size: 3.2rem;
     font-weight: 400;
     line-height: 1.1;
     margin-bottom: 0.8rem;
@@ -34,7 +152,7 @@
     color: var(--accent-gold);
 }
 
-/* Metadata alineada horizontalmente en pantallas grandes */
+/* Disposición horizontal compacta para el eslogan y pastores */
 .hero-meta {
     display: flex;
     justify-content: center;
@@ -70,12 +188,12 @@
     flex-wrap: wrap;
 }
 
-/* BOTONES COMPACTOS */
+/* BOTONES FINOS */
 .btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.7rem 1.8rem; /* Botones ligeramente más delgados */
+    padding: 0.7rem 1.8rem;
     border-radius: 2px;
     text-decoration: none;
     font-size: 0.78rem;
@@ -84,4 +202,182 @@
     text-transform: uppercase;
     transition: all 0.3s ease;
     cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--accent-gold);
+    color: #000000;
+    border: 1px solid var(--accent-gold);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-gold-hover);
+    border-color: var(--accent-gold-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   AGENDA Y REUNIONES
+   ========================================== */
+.schedule-section {
+    padding: 5.5rem 0;
+    border-top: 1px solid var(--border-subtle);
+    background-color: var(--bg-surface);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.section-subtitle {
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.section-header h2,
+.community-section h2 {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.schedule-card {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-subtle);
+    padding: 2.5rem 2rem;
+    border-radius: 0px;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.schedule-card:hover {
+    border-color: var(--border-gold-subtle);
+    transform: translateY(-4px);
+}
+
+.schedule-card.featured {
+    border-color: var(--border-gold-subtle);
+    background: linear-gradient(180deg, var(--bg-surface-elevated) 0%, var(--bg-main) 100%);
+}
+
+.day-label {
+    font-size: 0.7rem;
+    color: var(--accent-gold);
+    letter-spacing: 2px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.schedule-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.schedule-card .time {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    font-family: var(--font-serif);
+}
+
+.schedule-card .description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* ==========================================
+   COMUNIDAD & FOOTER
+   ========================================== */
+.community-section {
+    padding: 5.5rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-subtle);
+    background-color: var(--bg-main);
+}
+
+.community-section p {
+    color: var(--text-secondary);
+    margin: 0.8rem 0 2rem 0;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.btn-facebook {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+}
+
+.btn-facebook:hover {
+    border-color: #1877f2;
+    color: #1877f2;
+    transform: translateY(-2px);
+}
+
+footer {
+    border-top: 1px solid var(--border-subtle);
+    padding: 2.5rem 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    background-color: var(--bg-main);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 768px) {
+    .hero { 
+        padding: 3.5rem 0 2.5rem 0; 
+    }
+    .hero h1 { 
+        font-size: 2.5rem; 
+    }
+    .hero-meta {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .hero-meta .dot {
+        display: none;
+    }
+    .slogan { 
+        font-size: 1.1rem; 
+    }
+    .nav-container { 
+        flex-direction: column; 
+        gap: 1.2rem; 
+    }
+    .nav-links { 
+        gap: 1.5rem; 
+    }
 }
