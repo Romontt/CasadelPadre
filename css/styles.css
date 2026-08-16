@@ -1,0 +1,253 @@
+/* ==========================================
+   VARIABLES Y ESTILOS GLOBALES
+   ========================================== */
+:root {
+    --bg-dark: #0a111e;
+    --card-bg: #121d2f;
+    --primary-blue: #0075ff;
+    --cyan-accent: #00d2ff;
+    --text-white: #ffffff;
+    --text-muted: #a0aec0;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: var(--font-main);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   HEADER / NAVBAR
+   ========================================== */
+.navbar {
+    background-color: rgba(10, 17, 30, 0.95);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-white);
+    letter-spacing: 1px;
+}
+
+.brand-sub {
+    font-size: 0.75rem;
+    color: var(--cyan-accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--cyan-accent);
+}
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+.hero {
+    padding: 5rem 0;
+    text-align: center;
+    background: radial-gradient(circle at center, #132743 0%, var(--bg-dark) 70%);
+}
+
+.tagline {
+    font-size: 0.85rem;
+    color: var(--cyan-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.slogan {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+}
+
+.pastors {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* BOTONES */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue), var(--cyan-accent));
+    color: var(--text-white);
+    box-shadow: 0 4px 15px rgba(0, 117, 255, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    border-color: var(--cyan-accent);
+}
+
+/* ==========================================
+   HORARIOS / AGENDA
+   ========================================== */
+.schedule-section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.schedule-section h2,
+.community-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.schedule-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.schedule-card.highlight {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 20px rgba(0, 117, 255, 0.15);
+}
+
+.schedule-card h3 {
+    font-size: 1.4rem;
+    color: var(--cyan-accent);
+    margin-bottom: 0.5rem;
+}
+
+.schedule-card .time {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.schedule-card .activity {
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   REDES SOCIALES & FOOTER
+   ========================================== */
+.community-section {
+    padding: 4rem 0;
+    text-align: center;
+    background-color: var(--card-bg);
+}
+
+.community-section p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.social-btn.facebook {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #1877f2;
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVE PA CELULARES */
+@media (max-width: 600px) {
+    .hero h1 { font-size: 2rem; }
+    .nav-container { flex-direction: column; gap: 1rem; }
+}
