@@ -1,27 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ==========================================
-   VARIABLES Y PALETA CLARA (CREMA & AZUL)
+   VARIABLES Y PALETA GRIS CLARO DINÁMICA
    ========================================== */
 :root {
-    /* Fondos Crema / Marfil */
-    --bg-main: #fcfbf7;
-    --bg-surface: #f4f0ea;
-    --bg-surface-elevated: #ffffff;
+    /* Fondos Gris Claro en capas */
+    --bg-main: #f8fafc;              /* Slate ultra claro */
+    --bg-surface: #f1f5f9;           /* Gris niebla con matiz frío */
+    --bg-surface-elevated: #ffffff;  /* Blanco puro para tarjetas */
     
     /* Acentos Azules */
-    --accent-blue: #0f2b48;
-    --accent-blue-soft: rgba(15, 43, 72, 0.08);
-    --accent-blue-hover: #1d4ed8;
+    --accent-blue: #0f2b48;          /* Azul marino imperial */
+    --accent-blue-soft: rgba(15, 43, 72, 0.06);
+    --accent-blue-hover: #1e40af;    /* Azul cobalto */
     
     /* Textos para Fondo Claro */
-    --text-primary: #1c2430;
-    --text-secondary: #4a5568;
-    --text-muted: #718096;
+    --text-primary: #0f172a;        /* Azul grisáceo muy oscuro */
+    --text-secondary: #475569;      /* Slate medio */
+    --text-muted: #64748b;          /* Slate suave */
     
-    /* Bordes sutiles */
-    --border-subtle: rgba(15, 43, 72, 0.12);
-    --border-blue-subtle: rgba(15, 43, 72, 0.28);
+    /* Bordes con matiz neutro-frío */
+    --border-subtle: #e2e8f0;
+    --border-blue-subtle: rgba(15, 43, 72, 0.25);
     
     /* Tipografías */
     --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -56,7 +56,7 @@ body {
    NAVBAR SOBRIO
    ========================================== */
 .navbar {
-    background-color: rgba(252, 251, 247, 0.9);
+    background-color: rgba(248, 250, 252, 0.88);
     border-bottom: 1px solid var(--border-subtle);
     position: sticky;
     top: 0;
@@ -118,13 +118,13 @@ body {
 }
 
 /* ==========================================
-   HERO SECTION EDITORIAL (COMPACTO Y CLARO)
+   HERO SECTION EDITORIAL (CON DEGRADADO MULTI-MATIZ)
    ========================================== */
 .hero {
     padding: 4.5rem 0 3.5rem 0;
     text-align: center;
     position: relative;
-    background: radial-gradient(circle at 50% 15%, rgba(244, 240, 234, 0.8) 0%, var(--bg-main) 70%);
+    background: radial-gradient(circle at 50% 20%, #ffffff 0%, #f1f5f9 60%, var(--bg-main) 100%);
 }
 
 .location-badge {
@@ -214,17 +214,17 @@ body {
     background-color: var(--accent-blue-hover);
     border-color: var(--accent-blue-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(15, 43, 72, 0.15);
+    box-shadow: 0 4px 14px rgba(15, 43, 72, 0.15);
 }
 
 .btn-secondary {
-    background-color: transparent;
+    background-color: #ffffff;
     color: var(--accent-blue);
-    border: 1px solid var(--border-blue-subtle);
+    border: 1px solid var(--border-subtle);
 }
 
 .btn-secondary:hover {
-    background-color: var(--accent-blue-soft);
+    background-color: var(--bg-main);
     border-color: var(--accent-blue);
     transform: translateY(-2px);
 }
@@ -271,7 +271,7 @@ body {
     background-color: var(--bg-surface-elevated);
     border: 1px solid var(--border-subtle);
     padding: 2.5rem 2rem;
-    border-radius: 0px;
+    border-radius: 2px;
     transition: all 0.4s ease;
     position: relative;
 }
@@ -279,12 +279,13 @@ body {
 .schedule-card:hover {
     border-color: var(--border-blue-subtle);
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
 }
 
 .schedule-card.featured {
     border-color: var(--border-blue-subtle);
-    background: linear-gradient(180deg, #ffffff 0%, var(--bg-main) 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    box-shadow: 0 4px 20px rgba(15, 43, 72, 0.04);
 }
 
 .day-label {
@@ -336,13 +337,13 @@ body {
 }
 
 .btn-facebook {
-    background-color: transparent;
+    background-color: #ffffff;
     color: #1877f2;
     border: 1px solid rgba(24, 119, 242, 0.3);
 }
 
 .btn-facebook:hover {
-    background-color: rgba(24, 119, 242, 0.05);
+    background-color: rgba(24, 119, 242, 0.04);
     border-color: #1877f2;
     transform: translateY(-2px);
 }
