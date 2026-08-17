@@ -3,48 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio en Vivo</title>
+    <title>Radio CPInt - En Vivo</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- FontAwesome para Íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Supabase CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-    <!-- Botón para Volver -->
     <nav class="top-bar">
         <a href="../index.html" class="btn-back">
-            <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
+            <i class="fa-solid fa-chevron-left"></i> Regresar al Sitio Principal
         </a>
     </nav>
 
     <main class="radio-container">
         
-        <!-- PLAYER HERO -->
-        <section class="player-hero">
-            <div class="status-badge" id="liveBadge">
-                <span class="dot"></span> <span id="statusText">EN DIFERIDO</span>
-            </div>
-
+        <!-- PLAYER HERO COMPACTO -->
+        <section class="player-hero-compact">
             <div class="cover-container">
-                <img id="programCover" src="https://via.placeholder.com/300x300?text=Radio+En+Vivo" alt="Carátula del Programa">
-                <div class="equalizer" id="equalizer">
-                    <span></span><span></span><span></span><span></span>
+                <img id="programCover" src="https://via.placeholder.com/150?text=CPInt+Radio" alt="Carátula">
+            </div>
+
+            <div class="player-info-block">
+                <div class="status-badge" id="liveBadge">
+                    <span class="dot"></span> <span id="statusText">EN DIFERIDO</span>
                 </div>
+                <h1 id="programTitle">Cargando transmisión...</h1>
+                <p class="program-speaker" id="programSpeaker"><i class="fa-solid fa-microphone"></i> --</p>
+                <p id="programTime"><i class="fa-regular fa-clock"></i> --:--</p>
             </div>
 
-            <div class="program-info">
-                <h1 id="programTitle">Cargando programa...</h1>
-                <p id="programSpeaker"><i class="fa-solid fa-microphone"></i> --</p>
-                <p class="program-schedule" id="programTime"><i class="fa-regular fa-clock"></i> --:--</p>
-            </div>
-
-            <!-- Reproductor de Audio HTML5 -->
-            <div class="controls-container">
+            <div class="player-controls-compact">
                 <audio id="radioAudio" preload="none">
                     <source src="https://sapircast.caster.fm:18134/U9S3n" type="audio/mpeg">
-                    Tu navegador no soporta el elemento de audio.
                 </audio>
 
                 <button id="playBtn" class="btn-play">
@@ -52,24 +43,25 @@
                 </button>
 
                 <div class="volume-container">
-                    <i class="fa-solid fa-volume-high"></i>
+                    <i class="fa-solid fa-volume-low"></i>
                     <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
                 </div>
             </div>
-
-            <!-- Botón de Interacción WhatsApp -->
-            <a href="https://wa.me/50600000000?text=Hola,%20quisiera%20enviar%20un%20saludo/petición%20a%20la%20radio" 
-               target="_blank" class="btn-whatsapp">
-                <i class="fa-brands fa-whatsapp"></i> Pedir Oración / Saludar en Vivo
-            </a>
         </section>
+
+        <!-- Barra de WhatsApp debajo del Player -->
+        <div class="whatsapp-bar">
+            <a href="https://wa.me/50600000000?text=Hola,%20quisiera%20enviar%20un%20saludo/petición%20a%20la%20radio" 
+               target="_blank" class="btn-whatsapp-compact">
+                <i class="fa-brands fa-whatsapp"></i> Enviar petición de oración o saludo
+            </a>
+        </div>
 
         <!-- PARRILLA DE PROGRAMACIÓN -->
         <section class="parrilla-section">
-            <h2><i class="fa-solid fa-calendar-days"></i> Programación Semanal</h2>
+            <h2><i class="fa-solid fa-calendar-alt"></i> Programación Semanal</h2>
             <div class="parrilla-grid" id="parrillaGrid">
-                <!-- Se puebla dinámicamente desde app.js -->
-                <p class="loading-text">Cargando horarios...</p>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">Cargando horarios...</p>
             </div>
         </section>
 
