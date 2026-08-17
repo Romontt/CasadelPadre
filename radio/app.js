@@ -15,9 +15,8 @@ const programTime = document.getElementById('programTime');
 
 const parrillaGrid = document.getElementById('parrillaGrid');
 
-// URL del Stream mediante HTTPS para evitar el bloqueo del navegador
-// URL pública para evitar el cuadro de contraseña de Caster.fm
-const STREAM_URL = "https://stream.caster.fm/sapircast/stream";
+// Stream oficial de Caster.fm para reproductores web (sin credenciales)
+const STREAM_URL = "https://dir.caster.fm/stream/sapircast.mp3";
 
 let isPlaying = false;
 
@@ -27,8 +26,8 @@ playBtn.addEventListener('click', () => {
         audio.pause();
         playIcon.className = 'fa-solid fa-play';
     } else {
-        // Asignar dinámicamente la fuente HTTPS si está vacía
-        if (!audio.src || audio.src === '') {
+        // Asignar dinámicamente la fuente si está vacía
+        if (!audio.src || audio.src === '' || audio.src !== STREAM_URL) {
             audio.src = STREAM_URL;
         }
 
@@ -36,7 +35,7 @@ playBtn.addEventListener('click', () => {
             playIcon.className = 'fa-solid fa-pause';
         }).catch(err => {
             console.error("Error al conectar el audio:", err);
-            alert("No se pudo iniciar la señal. Verifica que la radio esté encendida en Caster.fm.");
+            alert("No se pudo iniciar la señal. Revisa que el programa oficial de Caster.fm esté transmitiendo en vivo.");
         });
     }
     isPlaying = !isPlaying;
