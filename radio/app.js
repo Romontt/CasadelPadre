@@ -1,15 +1,54 @@
 import { supabase } from '../supabaseClient.js';
 
-// Elementos del DOM para la programación
+// Elementos del DOM
+const audio = document.getElementById('radioAudio');
+const playBtn = document.getElementById('playBtn');
+const playIcon = document.getElementById('playIcon');
+const volumeSlider = document.getElementById('volumeSlider');
+
 const liveBadge = document.getElementById('liveBadge');
 const statusText = document.getElementById('statusText');
 const programCover = document.getElementById('programCover');
 const programTitle = document.getElementById('programTitle');
 const programSpeaker = document.getElementById('programSpeaker');
 const programTime = document.getElementById('programTime');
+
 const parrillaGrid = document.getElementById('parrillaGrid');
 
-// Cargar Programación desde Supabase
+// Stream URL pasando por proxy de cors-anywhere para evitar HTTPS/CORS y autenticación
+const STREAM_URL = "https://corsproxy.io/?" + encodeURIComponent("http://sapircast.caster.fm:18134/listen.mp3");
+
+let isPlaying = false;
+
+// 1. Control del Reproductor Audio
+if (playBtn && audio) {
+    playBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            audio.pause();
+            playIcon.className = 'fa-solid fa-play';
+        } else {
+            if (!audio.src || audio.src === '' || audio.src !== STREAM_URL) {
+                audio.src = STREAM_URL;
+            }
+
+            audio.play().then(() => {
+                playIcon.className = 'fa-solid fa-pause';
+            }).catch(err => {
+                console.error("Error al conectar el audio:", err);
+                alert("No se pudo conectar con la transmisión. Confirma que la app de Caster.fm esté transmitiendo.");
+            });
+        }
+        isPlaying = !isPlaying;
+    });
+}
+
+if (volumeSlider && audio) {
+    volumeSlider.addEventListener('input', (e) => {
+        audio.volume = e.target.value;
+    });
+}
+
+// 2. Cargar Programación desde Supabase
 async function cargarRadioData() {
     try {
         const { data: programas, error } = await supabase
@@ -82,4 +121,5 @@ function renderParrilla(programas) {
     });
 }
 
+// Inicializar
 cargarRadioData();
