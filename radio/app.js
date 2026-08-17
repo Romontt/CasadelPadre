@@ -15,8 +15,8 @@ const programTime = document.getElementById('programTime');
 
 const parrillaGrid = document.getElementById('parrillaGrid');
 
-// Stream oficial de Caster.fm para reproductores web (sin credenciales)
-const STREAM_URL = "https://dir.caster.fm/stream/sapircast.mp3";
+// Stream directo codificado en MP3 mediante el proxy SSL
+const STREAM_URL = "https://corsproxy.io/?" + encodeURIComponent("http://sapircast.caster.fm:18134/;stream.mp3");
 
 let isPlaying = false;
 
