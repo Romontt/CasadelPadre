@@ -17,7 +17,7 @@ const parrillaGrid = document.getElementById('parrillaGrid');
 
 // URL del Stream mediante HTTPS para evitar el bloqueo del navegador
 // URL pública para evitar el cuadro de contraseña de Caster.fm
-const STREAM_URL = "https://api.allorigins.win/raw?url=" + encodeURIComponent("http://sapircast.caster.fm:18134/U9S3n");
+const STREAM_URL = "https://stream.caster.fm/sapircast/stream";
 
 let isPlaying = false;
 
