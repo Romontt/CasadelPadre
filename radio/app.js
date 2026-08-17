@@ -15,8 +15,8 @@ const programTime = document.getElementById('programTime');
 
 const parrillaGrid = document.getElementById('parrillaGrid');
 
-// Stream URL pasando por proxy de cors-anywhere para evitar HTTPS/CORS y autenticación
-const STREAM_URL = "https://corsproxy.io/?" + encodeURIComponent("http://sapircast.caster.fm:18134/listen.mp3");
+// URL directa al punto de montaje de Caster.fm
+const STREAM_URL = "http://sapircast.caster.fm:18134/listen.mp3";
 
 let isPlaying = false;
 
@@ -25,20 +25,32 @@ if (playBtn && audio) {
     playBtn.addEventListener('click', () => {
         if (isPlaying) {
             audio.pause();
+            audio.src = ""; // Limpia el buffer
             playIcon.className = 'fa-solid fa-play';
+            isPlaying = false;
         } else {
-            if (!audio.src || audio.src === '' || audio.src !== STREAM_URL) {
-                audio.src = STREAM_URL;
-            }
+            // Forzar recarga del flujo en vivo
+            audio.src = STREAM_URL;
+            audio.load();
 
-            audio.play().then(() => {
-                playIcon.className = 'fa-solid fa-pause';
-            }).catch(err => {
-                console.error("Error al conectar el audio:", err);
-                alert("No se pudo conectar con la transmisión. Confirma que la app de Caster.fm esté transmitiendo.");
-            });
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    playIcon.className = 'fa-solid fa-pause';
+                    isPlaying = true;
+                }).catch(err => {
+                    console.error("Error al conectar el audio:", err);
+                    
+                    // Si el navegador bloquea HTTP no seguro sobre HTTPS (Mixed Content)
+                    if (window.location.protocol === 'https:') {
+                        alert("Tu navegador bloqueó la conexión por seguridad (HTTP sobre HTTPS). Haz clic en el candado de la barra de direcciones y permite 'Contenido no seguro' (Insecure Content) para escuchar el audio.");
+                    } else {
+                        alert("No se pudo conectar con la transmisión. Confirma que la app Caster.fm Broadcaster esté transmitiendo en vivo.");
+                    }
+                    isPlaying = false;
+                });
+            }
         }
-        isPlaying = !isPlaying;
     });
 }
 
@@ -106,7 +118,7 @@ function renderParrilla(programas) {
     parrillaGrid.innerHTML = '';
     
     programas.forEach(prog => {
-        const defaultImg = 'https://via.placeholder.com/100x100?text=Radio';
+        const defaultImg = 'https://placehold.co/100x100?text=Radio';
         const card = document.createElement('div');
         card.className = 'program-card';
         card.innerHTML = `
@@ -121,5 +133,4 @@ function renderParrilla(programas) {
     });
 }
 
-// Inicializar
 cargarRadioData();
