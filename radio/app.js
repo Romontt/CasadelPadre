@@ -16,7 +16,7 @@ const programTime = document.getElementById('programTime');
 const parrillaGrid = document.getElementById('parrillaGrid');
 
 // URL directa al punto de montaje de Caster.fm
-const STREAM_URL = "http://sapircast.caster.fm:18134/listen.mp3";
+const STREAM_URL = "https://swift-anteater-4722.romontt.deno.net";
 
 let isPlaying = false;
 
