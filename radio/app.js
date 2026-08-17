@@ -16,7 +16,8 @@ const programTime = document.getElementById('programTime');
 const parrillaGrid = document.getElementById('parrillaGrid');
 
 // URL del Stream mediante HTTPS para evitar el bloqueo del navegador
-const STREAM_URL = "https://sapircast.caster.fm:18134/U9S3n";
+// URL pública para evitar el cuadro de contraseña de Caster.fm
+const STREAM_URL = "http://shoutcast.caster.fm:2199/tunein/sapircast.pls";
 
 let isPlaying = false;
 
