@@ -5,7 +5,6 @@ const audio = document.getElementById('radioAudio');
 const playBtn = document.getElementById('playBtn');
 const playIcon = document.getElementById('playIcon');
 const volumeSlider = document.getElementById('volumeSlider');
-const equalizer = document.getElementById('equalizer');
 
 const liveBadge = document.getElementById('liveBadge');
 const statusText = document.getElementById('statusText');
@@ -16,18 +15,28 @@ const programTime = document.getElementById('programTime');
 
 const parrillaGrid = document.getElementById('parrillaGrid');
 
-// 1. Control del Reproductor Audio
+// URL del Stream mediante HTTPS para evitar el bloqueo del navegador
+const STREAM_URL = "https://sapircast.caster.fm:18134/U9S3n";
+
 let isPlaying = false;
 
+// 1. Control del Reproductor Audio
 playBtn.addEventListener('click', () => {
     if (isPlaying) {
         audio.pause();
         playIcon.className = 'fa-solid fa-play';
-        equalizer.classList.remove('active');
     } else {
-        audio.play();
-        playIcon.className = 'fa-solid fa-pause';
-        equalizer.classList.add('active');
+        // Asignar dinámicamente la fuente HTTPS si está vacía
+        if (!audio.src || audio.src === '') {
+            audio.src = STREAM_URL;
+        }
+
+        audio.play().then(() => {
+            playIcon.className = 'fa-solid fa-pause';
+        }).catch(err => {
+            console.error("Error al conectar el audio:", err);
+            alert("No se pudo iniciar la señal. Verifica que la radio esté encendida en Caster.fm.");
+        });
     }
     isPlaying = !isPlaying;
 });
@@ -60,14 +69,14 @@ async function cargarRadioData() {
             renderParrilla(programas);
         } else {
             programTitle.textContent = "Sin programación agendada";
-            programSpeaker.textContent = "Consulta más tarde";
-            parrillaGrid.innerHTML = '<p class="loading-text">No hay eventos guardados.</p>';
+            programSpeaker.innerHTML = '<i class="fa-solid fa-microphone"></i> Consulta más tarde';
+            parrillaGrid.innerHTML = '<p style="color: var(--text-secondary); font-size: 0.85rem;">No hay eventos guardados.</p>';
         }
 
     } catch (err) {
         console.error("Error al conectar con Supabase:", err.message);
         programTitle.textContent = "Transmisión Especial";
-        parrillaGrid.innerHTML = '<p class="loading-text">Error cargando horarios.</p>';
+        parrillaGrid.innerHTML = '<p style="color: var(--text-secondary); font-size: 0.85rem;">Error cargando horarios.</p>';
     }
 }
 
@@ -86,7 +95,7 @@ function mostrarProgramaHero(programa, enVivo) {
         statusText.textContent = 'EN VIVO AHORA';
     } else {
         liveBadge.classList.remove('live');
-        statusText.textContent = 'EN DIFERIDO / PROGRAMADO';
+        statusText.textContent = 'EN DIFERIDO';
     }
 }
 
